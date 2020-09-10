@@ -107,7 +107,7 @@ public class RedesController {
 	//função ping windows 
 	public void Ping(String sistemaOperacional) {
 		if(sistemaOperacional.contains("Linux")){//verifica o sistema operacional 
-			LinuxIp();
+			LinuxPing();
 		}else{
 			try {
 				int i = 0;
