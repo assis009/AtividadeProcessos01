@@ -178,11 +178,11 @@ public class RedesController {
 			}
 			linha = buffer.readLine();
 			while (linha != null) {
-				//verifica se contem Adaptador Ethernet
+				//verifica se contem RUNNING
 				if (linha.contains("RUNNING")) {
 					nomes++;
 					
-				} else if (linha.contains("inet")) {//verifica se contem IPv4
+				} else if (linha.contains("inet")) {//verifica se contem inet
 					ips++;
 				}
 				linha = buffer.readLine();
