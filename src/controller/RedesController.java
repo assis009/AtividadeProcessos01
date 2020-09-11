@@ -172,71 +172,20 @@ public class RedesController {
 			
 			BufferedReader buffer = new BufferedReader(leitor);
 			
-			while (i < 4) {
-				linha = buffer.readLine();
-				i++;
-			}
 			linha = buffer.readLine();
-			while (linha != null) {
-				//verifica se contem RUNNING
-				if (linha.contains("RUNNING")) {
-					nomes++;
-					
-				} else if (linha.contains("inet")) {//verifica se contem inet
-					ips++;
-				}
-				linha = buffer.readLine();
-				if (linha == null) {
-					linha = buffer.readLine();
-				}
+			
+			String [] vetorPalavras = linha.split(" netmask");
+			
+//foreach = for (TipodoDado var : vetor)
+			
+			for (String palavra : vetorPalavras){
+				System.out.println(palavra);
 			}
-			String Nome[] = new String[nomes];
-			String ip[] = new String[ips];
 			
 			buffer.close();
 			leitor.close();
 			fluxo.close();
 			
-//Chamando processo ip novamente 
-			
-			i = 0;
-			ips = 0;
-			nomes = 0;
-			
-			Process p2 = Runtime.getRuntime().exec("ifconfig");
-			
-			InputStream fluxo2 = p2.getInputStream();
-			InputStreamReader leitor2 = new InputStreamReader(fluxo2);
-			
-			BufferedReader buffer2 = new BufferedReader(leitor2);
-			
-			while (i < 4) {
-				linha = buffer2.readLine();
-				i++;
-			}
-			linha = buffer2.readLine();
-			while (linha != null) {
-				if (linha.contains("RUNNING")) {
-					Nome[nomes] = linha;
-					nomes++;
-				} else if (linha.contains("inet")) {
-					ip[ips] = linha.substring(49);
-					ips++;
-				}
-				linha = buffer2.readLine();
-				if (linha == null) {
-					linha = buffer2.readLine();
-				}
-			}
-			
-			buffer2.close();
-			leitor2.close();
-			fluxo2.close();
-			
-			for (i = 0; i < ips; i++) {
-				System.out.println(Nome[i]);
-				System.out.println(ip[i]);
-			}
 // Fim do processo  ip 
 			
 		} catch (Exception e) {
@@ -248,9 +197,7 @@ public class RedesController {
 	//função Ping para Linux 
 	public void LinuxPing(){
 		try {
-			int i = 0;
-			int x = 0;
-
+			
 			Process p = Runtime.getRuntime().exec("ping -c10 www.google.com.br");//comando que verifica o Ping dos pacotes
 			
 			InputStream fluxo = p.getInputStream();
@@ -260,25 +207,12 @@ public class RedesController {
 			
 			String linha = buffer.readLine();
 			
-			while (linha != null) {
-				
-				linha = buffer.readLine();
-				if (linha.contains("mdev")) {
-					String[] vetorMS = linha.split(" ");
-					for (String MS : vetorMS) {
-						i++;
-					}
-					x = i;
-					i = 0;
-					String[] vetorMS2 = linha.split(" ");
-					for (String MS2 : vetorMS2) {
-						i++;
-						if (i == x) {
-							System.out.println(MS2);
-						}
-					}
-					linha = null;
-				}
+			String [] vetorPalavras = linha.split(" ms");
+			
+			//foreach = for (TipodoDado var : vetor)
+			
+			for (String palavra : vetorPalavras){
+				System.out.println(palavra);
 			}
 			
 			buffer.close();

@@ -13,7 +13,7 @@ public class Main {
 		
 		int Opc = 0;
         while (Opc != 10){
-            Opc = Integer.parseInt(JOptionPane.showInputDialog("\n      Atividade 1 \n 1 – Verificar ip \n 2 –Media de ping \n 10 - Finalizar"));
+            Opc = Integer.parseInt(JOptionPane.showInputDialog("\n      Atividade 1 \n 1 – Verificar ips ativos  \n 2 –Media de ping \n 10 - Finalizar"));
             switch (Opc){
                 case 1:
                 	//faz a chamada da função ip
