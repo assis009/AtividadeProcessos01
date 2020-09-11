@@ -173,14 +173,15 @@ public class RedesController {
 			BufferedReader buffer = new BufferedReader(leitor);
 			
 			linha = buffer.readLine();
-			
-			String [] vetorPalavras = linha.split(" netmask");
-			
-//foreach = for (TipodoDado var : vetor)
-			
-			for (String palavra : vetorPalavras){
-				System.out.println(palavra);
+			while(linha != null){
+				if(linha.contains("netmask") || linha.contains(" mtu")){
+				System.out.println(linha);
+				linha = buffer.readLine();
+				}else{
+					linha = buffer.readLine();
+				}
 			}
+
 			
 			buffer.close();
 			leitor.close();
@@ -207,12 +208,13 @@ public class RedesController {
 			
 			String linha = buffer.readLine();
 			
-			String [] vetorPalavras = linha.split(" ms");
-			
-			//foreach = for (TipodoDado var : vetor)
-			
-			for (String palavra : vetorPalavras){
-				System.out.println(palavra);
+			while(linha != null){
+				if(linha.contains("rtt")){
+				System.out.println(linha);
+				linha = buffer.readLine();
+				}else{
+					linha = buffer.readLine();
+				}
 			}
 			
 			buffer.close();
